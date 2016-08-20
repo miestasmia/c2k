@@ -40,7 +40,7 @@
             "@left_ball_h": [
                 {
                     "type": "if",
-                    "if": "x > .1",
+                    "if": "x > .15",
                     "do": [
                         {
                             "type": "if_key",
@@ -63,7 +63,7 @@
                     ],
                     "else": {
                         "type": "if",
-                        "if": "x < -.1",
+                        "if": "x < -.15",
                         "do": [
                             {
                                 "type": "if_key",
@@ -87,7 +87,7 @@
                         "else": [
                             {
                                 "type": "if",
-                                "if": "math.copysign(x, 1) < .1",
+                                "if": "math.copysign(x, 1) < .15",
                                 "do": {
                                     "type": "if_key",
                                     "key": "Right",
