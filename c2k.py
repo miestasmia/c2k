@@ -180,7 +180,7 @@ def watch_controller(joystick, bindings, controller):
 
 euid = os.geteuid()
 if euid != 0:
-    print "error: c2k was not run as root"
+    print "error: c2k must be run as root"
     sys.exit(126)
 
 pygame.init()
