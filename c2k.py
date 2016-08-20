@@ -28,8 +28,10 @@ from pykeyboard import PyKeyboard
 
 DRAW_FPS  = 20
 WATCH_FPS = 30
-
 TRIGGER_SYMBOLS = "!~@"
+
+dirname = os.path.dirname(__file__)
+sys.path.append(os.path.join(dirname, os.path.pardir))
 
 def draw_controller(joystick, text):
     stdscr = curses.initscr()
@@ -208,10 +210,10 @@ while joystick is None:
     else:
         print "There's no controller with that id"
 
-with open("controllers.json") as controller_config_file:
+with open(os.path.join(dirname, 'controllers.json')) as controller_config_file:
     controller_config = json.load(controller_config_file)
 
-with open("bindings.json") as bindings_config_file:
+with open(os.path.join(dirname, 'bindings.json')) as bindings_config_file:
     bindings_config = json.load(bindings_config_file)
 
 joystick.init()
