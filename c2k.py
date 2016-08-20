@@ -112,18 +112,21 @@ def watch_controller(joystick, bindings, controller):
             key_watch[ action['key'] ] = False
         elif type == 'if':
             if eval(action['if'], globals(), { 'x': controller_watch[input] }):
-                for do_action in action['do']:
-                    handle_action(do_action, input)
+                handle_actions(action['do'], input)
             elif 'else' in action:
-                for else_action in action['else']:
-                    handle_action(else_action, input)
+                handle_actions(action['else'], input)
         elif type == 'if_key':
             if get_key(action['key']) == action['is']:
-                for do_action in action['do']:
-                    handle_action(do_action, input)
+                handle_actions(action['do'], input)
             elif 'else' in action:
-                for else_action in action['else']:
-                    handle_action(else_action, input)
+                handle_actions(action['else'], input)
+
+    def handle_actions(actions, input):
+        if isinstance(actions, list):
+            for action in actions:
+                handle_action(action, input)
+        elif isinstance(actions, dict):
+            handle_action(actions, input)
 
     while True:
         pygame.event.pump()
@@ -166,8 +169,7 @@ def watch_controller(joystick, bindings, controller):
                 do_trigger = True
 
             if do_trigger:
-                for action in actions:
-                    handle_action(action, binding)
+                handle_actions(actions, binding)
 
         clock.tick(WATCH_FPS)
 
