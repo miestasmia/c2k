@@ -144,7 +144,12 @@ def watch_controller(joystick, bindings, controller):
             if input['type'] == 'button':
                 controller_watch[name] = joystick.get_button(input['id'])
             elif input['type'] == 'axis':
-                controller_watch[name] = joystick.get_axis(input['id'])
+                val = joystick.get_axis(input['id'])
+
+                if ('force_positive' in input and input['force_positive']):
+                    val = (val + 1) / 2
+
+                controller_watch[name] = val
 
         for binding, actions in bindings.iteritems():
             trigger = ""
