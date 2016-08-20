@@ -1,0 +1,148 @@
+{
+    "Sony PLAYSTATION(R)3 Controller": {
+        "ff": {
+            "id": "usb-Sony_PLAYSTATION_R_3_Controller-event-joystick"
+        },
+        "inputs": {
+            "left_ball_h": {
+                "type": "axis",
+                "id": 0
+            },
+            "left_ball_v": {
+                "type": "axis",
+                "id": 1
+            },
+            "right_ball_h": {
+                "type": "axis",
+                "id": 2
+            },
+            "right_ball_v": {
+                "type": "axis",
+                "id": 3
+            },
+            "l1_a": {
+                "type": "axis",
+                "id": 14,
+                "force_positive": true
+            },
+            "l1_d": {
+                "type": "button",
+                "id": 10
+            },
+            "l2_a": {
+                "type": "axis",
+                "id": 12,
+                "force_positive": true
+            },
+            "l2_d": {
+                "type": "button",
+                "id": 8
+            },
+            "l3": {
+                "type": "button",
+                "id": 1
+            },
+            "r1_a": {
+                "type": "axis",
+                "id": 15,
+                "force_positive": true
+            },
+            "r1_d": {
+                "type": "button",
+                "id": 11
+            },
+            "r2_a": {
+                "type": "axis",
+                "id": 13,
+                "force_positive": true
+            },
+            "r2_d": {
+                "type": "button",
+                "id": 9
+            },
+            "r3": {
+                "type": "button",
+                "id": 2
+            },
+            "ps": {
+                "type": "button",
+                "id": 16
+            },
+            "select": {
+                "type": "button",
+                "id": 0
+            },
+            "start": {
+                "type": "button",
+                "id": 3
+            },
+            "left_d": {
+                "type": "button",
+                "id": 7
+            },
+            "up_a": {
+                "type": "axis",
+                "id": 8,
+                "force_positive": true
+            },
+            "up_d": {
+                "type": "button",
+                "id": 4
+            },
+            "right_a": {
+                "type": "axis",
+                "id": 9,
+                "force_positive": true
+            },
+            "right_d": {
+                "type": "button",
+                "id": 5
+            },
+            "down_a": {
+                "type": "axis",
+                "id": 10,
+                "force_positive": true
+            },
+            "down_d": {
+                "type": "button",
+                "id": 6
+            },
+            "triangle_a": {
+                "type": "axis",
+                "id": 16,
+                "force_positive": true
+            },
+            "triangle_d": {
+                "type": "button",
+                "id": 12
+            },
+            "circle_a": {
+                "type": "axis",
+                "id": 17,
+                "force_positive": true
+            },
+            "circle_d": {
+                "type": "button",
+                "id": 13
+            },
+            "x_a": {
+                "type": "axis",
+                "id": 18,
+                "force_positive": true
+            },
+            "x_d": {
+                "type": "button",
+                "id": 14
+            },
+            "square_a": {
+                "type": "axis",
+                "id": 19,
+                "force_positive": true
+            },
+            "square_d": {
+                "type": "button",
+                "id": 15
+            }
+        }
+    }
+}
