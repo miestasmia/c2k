@@ -28,7 +28,7 @@ from pykeyboard import PyKeyboard
 
 DRAW_FPS  = 20
 WATCH_FPS = 60
-TRIGGER_SYMBOLS = "!~@"
+TRIGGER_SYMBOLS = "!~@*"
 
 dirname = os.path.dirname(__file__)
 sys.path.append(os.path.join(dirname, os.path.pardir))
@@ -91,6 +91,8 @@ def watch_controller(joystick, bindings, controller):
 
     mousePos = (0, 0)
 
+    timestamp = 0
+
     controller_watch = {}
     controller_watch_previous = {}
     for name, input in controller['inputs'].iteritems():
@@ -107,7 +109,7 @@ def watch_controller(joystick, bindings, controller):
             return False
 
     def handle_action(action, input):
-        global mousePos
+        global mousePos, timestamp
 
         type = action['type']
 
@@ -152,6 +154,14 @@ def watch_controller(joystick, bindings, controller):
                 y = action['y']
 
             mouse.scroll(y, x)
+        elif type == 'do_every':
+            if not 'last' in action:
+                action['last'] = 0
+
+            if timestamp - action['last'] >= action['every']:
+                handle_actions(action['do'], input)
+                action['last'] = timestamp
+
     def handle_actions(actions, input):
         if isinstance(actions, list):
             for action in actions:
@@ -160,7 +170,9 @@ def watch_controller(joystick, bindings, controller):
             handle_action(actions, input)
 
     while True:
-        global mousePos
+        global mousePos, timestamp
+
+        timestamp = time.time()
 
         pygame.event.pump()
 
@@ -207,6 +219,8 @@ def watch_controller(joystick, bindings, controller):
                 do_trigger = changed
             elif trigger == "@": # always
                 do_trigger = True
+            elif trigger == "*": # always when down
+                do_trigger = value
 
             if do_trigger:
                 handle_actions(actions, binding)
