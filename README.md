@@ -14,6 +14,7 @@ Please change your controls in Menu → Options to reflect the following:
 * Input Rate -: <kbd>F3</kbd>
 * Block Menu: <kbd>X</kbd>
 
+Controls:
 * Right analog stick to look around and move cursor
 * Left analog stick to move
 * Start button to open/close menu
@@ -36,6 +37,7 @@ Please change your controls in Menu → Options to reflect the following:
 
 ### Kingdom: New Lands
 #### PlayStation DualShock 3
+Controls:
 * Left analog stick to move. Sprints at 95%
 * X button to spend gold
 * Start button to open/close menu
