@@ -174,8 +174,6 @@ def watch_controller(joystick, bindings, controller):
             handle_action(actions, input)
 
     while True:
-        global mousePos, timestamp, lastTimestamp, deltaTime
-        
         timestamp = time.time()
         deltaTime = timestamp - lastTimestamp
 
