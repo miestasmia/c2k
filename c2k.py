@@ -165,6 +165,10 @@ def watch_controller(joystick, bindings, controller):
             if timestamp - action['last'] >= action['every']:
                 handle_actions(action['do'], input)
                 action['last'] = timestamp
+        elif type == 'mouse_down':
+            mouse.press(mousePos[0], mousePos[1], action['button'])
+        elif type == 'mouse_up':
+            mouse.release(mousePos[0], mousePos[1], action['button'])
 
     def handle_actions(actions, input):
         if isinstance(actions, list):
