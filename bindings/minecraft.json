@@ -294,7 +294,7 @@
                 "type": "keyboard_tap",
                 "key": "F2"
             },
-            "bottom_d": {
+            "down_d": {
                 "type": "keyboard_tap",
                 "key": "F1"
             },
