@@ -83,6 +83,8 @@ def draw_controller(joystick, text):
             curses.endwin()
 
 def watch_controller(joystick, bindings, controller):
+    global mousePos, timestamp, lastTimestamp, deltaTime
+
     # Load output
     mouse = PyMouse()
     keyboard = PyKeyboard()
@@ -91,7 +93,9 @@ def watch_controller(joystick, bindings, controller):
 
     mousePos = (0, 0)
 
+    lastTimestamp = 0
     timestamp = 0
+    deltaTime = timestamp - lastTimestamp
 
     controller_watch = {}
     controller_watch_previous = {}
@@ -109,7 +113,7 @@ def watch_controller(joystick, bindings, controller):
             return False
 
     def handle_action(action, input):
-        global mousePos, timestamp
+        global mousePos, timestamp, deltaTime
 
         type = action['type']
 
@@ -135,13 +139,13 @@ def watch_controller(joystick, bindings, controller):
         elif type == 'move_mouse_h_proportional':
             speed = controller_watch[input]
             mouseX, mouseY = mousePos
-            mouseX += speed * action['factor']
+            mouseX += speed * action['factor'] * deltaTime
             mousePos = (mouseX, mouseY)
             mouse.move(*mousePos)
         elif type == 'move_mouse_v_proportional':
             speed = controller_watch[input]
             mouseX, mouseY = mousePos
-            mouseY += speed * action['factor']
+            mouseY += speed * action['factor'] * deltaTime
             mousePos = (mouseX, mouseY)
             mouse.move(*mousePos)
         elif type == 'scroll':
@@ -170,9 +174,10 @@ def watch_controller(joystick, bindings, controller):
             handle_action(actions, input)
 
     while True:
-        global mousePos, timestamp
-
+        global mousePos, timestamp, lastTimestamp, deltaTime
+        
         timestamp = time.time()
+        deltaTime = timestamp - lastTimestamp
 
         pygame.event.pump()
 
@@ -224,6 +229,8 @@ def watch_controller(joystick, bindings, controller):
 
             if do_trigger:
                 handle_actions(actions, binding)
+
+        lastTimestamp = timestamp
 
         clock.tick(WATCH_FPS)
 
