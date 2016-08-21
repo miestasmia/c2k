@@ -22,7 +22,7 @@ OUT OF  OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import pygame, subprocess, time, os, sys, json, curses, math
+import pygame, subprocess, time, os, sys, json, curses, math, signal
 from pymouse import PyMouse
 from pykeyboard import PyKeyboard
 
@@ -32,6 +32,10 @@ TRIGGER_SYMBOLS = "!~@"
 
 dirname = os.path.dirname(__file__)
 sys.path.append(os.path.join(dirname, os.path.pardir))
+
+def signal_handler(signal, frame):
+    sys.exit(130)
+signal.signal(signal.SIGINT, signal_handler)
 
 def draw_controller(joystick, text):
     stdscr = curses.initscr()
@@ -146,7 +150,7 @@ def watch_controller(joystick, bindings, controller):
                 x = action['x']
             if 'y' in action:
                 y = action['y']
-            
+
             mouse.scroll(y, x)
     def handle_actions(actions, input):
         if isinstance(actions, list):
