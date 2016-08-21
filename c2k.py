@@ -138,7 +138,16 @@ def watch_controller(joystick, bindings, controller):
             mouseY += speed * action['factor']
             mousePos = (mouseX, mouseY)
             mouse.move(*mousePos)
+        elif type == 'scroll':
+            x = 0
+            y = 0
 
+            if 'x' in action:
+                x = action['x']
+            if 'y' in action:
+                y = action['y']
+            
+            mouse.scroll(y, x)
     def handle_actions(actions, input):
         if isinstance(actions, list):
             for action in actions:
