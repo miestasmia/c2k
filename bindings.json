@@ -386,8 +386,16 @@
                 "button": 2
             },
             "triangle_d": {
-                "type": "keyboard_tap",
-                "key": "r"
+                "type": "if",
+                "if": "b['ps']",
+                "do": {
+                    "type": "keyboard_tap",
+                    "key": "p"
+                },
+                "else": {
+                    "type": "keyboard_tap",
+                    "key": "r"
+                }
             },
             "square_d": {
                 "type": "if",
