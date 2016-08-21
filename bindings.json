@@ -87,7 +87,7 @@
                         "else": [
                             {
                                 "type": "if",
-                                "if": "math.copysign(x, 1) < .15",
+                                "if": "abs(x) < .15",
                                 "do": {
                                     "type": "if_key",
                                     "key": "Right",
@@ -112,7 +112,7 @@
                 },
                 {
                     "type": "if",
-                    "if": "math.copysign(x, 1) > .95",
+                    "if": "abs(x) > .95",
                     "do": {
                         "type": "if_key",
                         "key": "Shift_L",
@@ -133,6 +133,347 @@
                     }
                 }
             ]
+        }
+    },
+    "Infinifactory":  {
+        "Sony PLAYSTATION(R)3 Controller": {
+            "@right_ball_h": {
+                "type": "move_mouse_h_proportional",
+                "factor": 1000
+            },
+            "@right_ball_v": {
+                "type": "move_mouse_v_proportional",
+                "factor": 1000
+            },
+            "@left_ball_h": {
+                "type": "if",
+                "if": "x > .15",
+                "do": [
+                    {
+                        "type": "if_key",
+                        "key": "d",
+                        "is": false,
+                        "do": {
+                            "type": "keyboard_down",
+                            "key": "d"
+                        }
+                    },
+                    {
+                        "type": "if_key",
+                        "key": "a",
+                        "is": true,
+                        "do": {
+                            "type": "keyboard_up",
+                            "key": "a"
+                        }
+                    }
+                ],
+                "else": {
+                    "type": "if",
+                    "if": "x < -.15",
+                    "do": [
+                        {
+                            "type": "if_key",
+                            "key": "a",
+                            "is": false,
+                            "do": {
+                                "type": "keyboard_down",
+                                "key": "a"
+                            }
+                        },
+                        {
+                            "type": "if_key",
+                            "key": "d",
+                            "is": true,
+                            "do": {
+                                "type": "keyboard_up",
+                                "key": "d"
+                            }
+                        }
+                    ],
+                    "else": [
+                        {
+                            "type": "if",
+                            "if": "abs(x) < .15",
+                            "do": {
+                                "type": "if_key",
+                                "key": "d",
+                                "is": true,
+                                "do": {
+                                    "type": "keyboard_up",
+                                    "key": "d"
+                                }
+                            }
+                        },
+                        {
+                            "type": "if_key",
+                            "key": "a",
+                            "is": true,
+                            "do": {
+                                "type": "keyboard_up",
+                                "key": "a"
+                            }
+                        }
+                    ]
+                }
+            },
+            "@left_ball_v": {
+                "type": "if",
+                "if": "x > .15",
+                "do": [
+                    {
+                        "type": "if_key",
+                        "key": "s",
+                        "is": false,
+                        "do": {
+                            "type": "keyboard_down",
+                            "key": "s"
+                        }
+                    },
+                    {
+                        "type": "if_key",
+                        "key": "w",
+                        "is": true,
+                        "do": {
+                            "type": "keyboard_up",
+                            "key": "w"
+                        }
+                    }
+                ],
+                "else": {
+                    "type": "if",
+                    "if": "x < -.15",
+                    "do": [
+                        {
+                            "type": "if_key",
+                            "key": "w",
+                            "is": false,
+                            "do": {
+                                "type": "keyboard_down",
+                                "key": "w"
+                            }
+                        },
+                        {
+                            "type": "if_key",
+                            "key": "s",
+                            "is": true,
+                            "do": {
+                                "type": "keyboard_up",
+                                "key": "s"
+                            }
+                        }
+                    ],
+                    "else": [
+                        {
+                            "type": "if",
+                            "if": "abs(x) < .15",
+                            "do": {
+                                "type": "if_key",
+                                "key": "s",
+                                "is": true,
+                                "do": {
+                                    "type": "keyboard_up",
+                                    "key": "s"
+                                }
+                            }
+                        },
+                        {
+                            "type": "if_key",
+                            "key": "w",
+                            "is": true,
+                            "do": {
+                                "type": "keyboard_up",
+                                "key": "w"
+                            }
+                        }
+                    ]
+                }
+            },
+            "start": {
+                "type": "keyboard_tap",
+                "key": "Escape"
+            },
+            "l1_d": {
+                "type": "if",
+                "if": "b['r1_d']",
+                "do": {
+                    "type": "keyboard_down",
+                    "key": "x"
+                }
+            },
+            "!l1_d": {
+                "type": "if_key",
+                "key": "x",
+                "is": true,
+                "do": {
+                    "type": "keyboard_up",
+                    "key": "x"
+                }
+            },
+            "*l1_d": {
+                "type": "if_key",
+                "key": "x",
+                "is": false,
+                "do": {
+                    "type": "do_every",
+                    "every": 0.1,
+                    "do": {
+                        "type": "scroll",
+                        "y": 1
+                    }
+                }
+            },
+            "r1_d": {
+                "type": "if",
+                "if": "b['l1_d']",
+                "do": {
+                    "type": "keyboard_down",
+                    "key": "x"
+                }
+            },
+            "!r1_d": {
+                "type": "if_key",
+                "key": "x",
+                "is": true,
+                "do": {
+                    "type": "keyboard_up",
+                    "key": "x"
+                }
+            },
+            "*r1_d": {
+                "type": "if_key",
+                "key": "x",
+                "is": false,
+                "do": {
+                    "type": "do_every",
+                    "every": 0.1,
+                    "do": {
+                        "type": "scroll",
+                        "y": -1
+                    }
+                }
+            },
+            "l2_d": {
+                "type": "keyboard_down",
+                "key": " "
+            },
+            "!l2_d": {
+                "type": "keyboard_up",
+                "key": " "
+            },
+            "r2_d": {
+                "type": "keyboard_down",
+                "key": "Control_L"
+            },
+            "!r2_d": {
+                "type": "keyboard_up",
+                "key": "Control_L"
+            },
+            "l3": {
+                "type": "mouse_down",
+                "button": 1
+            },
+            "!l3": {
+                "type": "mouse_up",
+                "button": 1
+            },
+            "r3": {
+                "type": "mouse_down",
+                "button": 2
+            },
+            "!r3": {
+                "type": "mouse_up",
+                "button": 2
+            },
+            "triangle_d": {
+                "type": "keyboard_tap",
+                "key": "r"
+            },
+            "square_d": {
+                "type": "if",
+                "if": "b['ps']",
+                "do": {
+                    "type": "keyboard_tap",
+                    "key": "g"
+                },
+                "else": {
+                    "type": "keyboard_down",
+                    "key": "f"
+                }
+            },
+            "!square_d": {
+                "type": "if_key",
+                "key": "f",
+                "is": true,
+                "do": {
+                    "type": "keyboard_up",
+                    "key": "f"
+                }
+            },
+            "circle_d": {
+                "type": "if",
+                "if": "b['ps']",
+                "do": {
+                    "type": "keyboard_tap",
+                    "key": "h"
+                },
+                "else": {
+                    "type": "keyboard_tap",
+                    "key": "t"
+                }
+            },
+            "left_d": {
+                "type": "if",
+                "if": "b['ps']",
+                "do": {
+                    "type": "keyboard_tap",
+                    "key": "z"
+                },
+                "else": {
+                    "type": "keyboard_tap",
+                    "key": "q"
+                }
+            },
+            "right_d": {
+                "type": "if",
+                "if": "b['ps']",
+                "do": {
+                    "type": "keyboard_tap",
+                    "key": "y"
+                },
+                "else": {
+                    "type": "keyboard_tap",
+                    "key": "e"
+                }
+            },
+            "up_d": {
+                "type": "if",
+                "if": "b['ps']",
+                "do": {
+                    "type": "keyboard_tap",
+                    "key": "F4"
+                },
+                "else": {
+                    "type": "keyboard_tap",
+                    "key": "c"
+                }
+            },
+            "down_d": {
+                "type": "if",
+                "if": "b['ps']",
+                "do": {
+                    "type": "keyboard_tap",
+                    "key": "F3"
+                }
+            },
+            "select": {
+                "type": "keyboard_tap",
+                "key": "F10"
+            },
+            "x_d": {
+                "type": "mouse_click",
+                "button": 3
+            }
         }
     }
 }
