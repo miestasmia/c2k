@@ -277,8 +277,7 @@ while joystick is None:
 with open(os.path.join(dirname, 'controllers.json')) as controller_config_file:
     controller_config = json.load(controller_config_file)
 
-with open(os.path.join(dirname, 'bindings.json')) as bindings_config_file:
-    bindings_config = json.load(bindings_config_file)
+bindings_files = os.listdir(os.path.join(dirname, 'bindings'))
 
 joystick.init()
 
@@ -290,20 +289,22 @@ else:
     print "Please select a binding"
     print "Available bindings:"
 
-    for i, binding in enumerate(bindings_config):
-        print "(%s) %s" % (i, binding)
+    for filename in bindings_files:
+        with open(os.path.join(dirname, 'bindings', filename)) as file:
+            file_data = json.load(file)
+
+        if not joystick.get_name() in file_data['bindings']:
+            continue
+
+        print "* %s (%s)" % (file_data['name'], filename[:-5])
 
     binding = None
     while binding is None:
-        binding_id = raw_input("Binding id: ")
-        try:
-            binding_id = int(binding_id)
-        except ValueError:
-            print "Invalid binding id"
-            continue
+        binding_id = raw_input("Binding name: ")
 
-        if binding_id < len(bindings_config):
-            binding = bindings_config[ bindings_config.keys()[binding_id] ][ joystick.get_name() ]
+        if binding_id + ".json" in bindings_files:
+            with open(os.path.join(dirname, 'bindings', binding_id + ".json")) as file:
+                binding = json.load(file)['bindings'][ joystick.get_name() ]
         else:
             print "There's no binding with that id"
 

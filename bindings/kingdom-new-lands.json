@@ -1,0 +1,139 @@
+{
+    "name": "Kingdom: New Lands",
+    "bindings": {
+        "Sony PLAYSTATION(R)3 Controller": {
+            "start": {
+                "type": "keyboard_tap",
+                "key": "Escape"
+            },
+            "down_d": {
+                "type": "keyboard_down",
+                "key": "Down"
+            },
+            "!down_d": {
+                "type": "keyboard_up",
+                "key": "Down"
+            },
+            "up_d": {
+                "type": "keyboard_down",
+                "key": "Up"
+            },
+            "!up_d": {
+                "type": "keyboard_up",
+                "key": "Up"
+            },
+            "x_d": {
+                "type": "keyboard_down",
+                "key": "Down"
+            },
+            "!x_d": {
+                "type": "keyboard_up",
+                "key": "Down"
+            },
+            "circle_d": {
+                "type": "keyboard_down",
+                "key": "Return"
+            },
+            "!circle_d": {
+                "type": "keyboard_up",
+                "key": "Return"
+            },
+            "@left_ball_h": [
+                {
+                    "type": "if",
+                    "if": "x > .15",
+                    "do": [
+                        {
+                            "type": "if_key",
+                            "key": "Right",
+                            "is": false,
+                            "do": {
+                                "type": "keyboard_down",
+                                "key": "Right"
+                            }
+                        },
+                        {
+                            "type": "if_key",
+                            "key": "Left",
+                            "is": true,
+                            "do": {
+                                "type": "keyboard_up",
+                                "key": "Left"
+                            }
+                        }
+                    ],
+                    "else": {
+                        "type": "if",
+                        "if": "x < -.15",
+                        "do": [
+                            {
+                                "type": "if_key",
+                                "key": "Left",
+                                "is": false,
+                                "do": {
+                                    "type": "keyboard_down",
+                                    "key": "Left"
+                                }
+                            },
+                            {
+                                "type": "if_key",
+                                "key": "Right",
+                                "is": true,
+                                "do": {
+                                    "type": "keyboard_up",
+                                    "key": "Right"
+                                }
+                            }
+                        ],
+                        "else": [
+                            {
+                                "type": "if",
+                                "if": "abs(x) < .15",
+                                "do": {
+                                    "type": "if_key",
+                                    "key": "Right",
+                                    "is": true,
+                                    "do": {
+                                        "type": "keyboard_up",
+                                        "key": "Right"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "if_key",
+                                "key": "Left",
+                                "is": true,
+                                "do": {
+                                    "type": "keyboard_up",
+                                    "key": "Left"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "if",
+                    "if": "abs(x) > .95",
+                    "do": {
+                        "type": "if_key",
+                        "key": "Shift_L",
+                        "is": false,
+                        "do": {
+                            "type": "keyboard_down",
+                            "key": "Shift_L"
+                        }
+                    },
+                    "else": {
+                        "type": "if_key",
+                        "key": "Shift_L",
+                        "is": true,
+                        "do": {
+                            "type": "keyboard_up",
+                            "key": "Shift_L"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
