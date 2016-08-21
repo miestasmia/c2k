@@ -304,8 +304,12 @@ else:
 
         if binding_id + ".json" in bindings_files:
             with open(os.path.join(dirname, 'bindings', binding_id + ".json")) as file:
-                binding = json.load(file)['bindings'][ joystick.get_name() ]
+                binding_json = json.load(file)['bindings']
+                if joystick.get_name() in binding_json:
+                    binding = binding_json[ joystick.get_name() ]
+                else:
+                    print "That binding isn't available for your controller"
         else:
-            print "There's no binding with that id"
+            print "There's no binding with that name"
 
     watch_controller(joystick, binding, controller_config[ joystick.get_name() ])
