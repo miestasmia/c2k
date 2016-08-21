@@ -127,7 +127,10 @@ def watch_controller(joystick, bindings, controller):
             keyboard.release_key(action['key'])
             key_watch[ action['key'] ] = False
         elif type == 'if':
-            if eval(action['if'], globals(), { 'x': controller_watch[input] }):
+            if eval(action['if'], globals(), {
+                'x': controller_watch[input],
+                'b': controller_watch
+            }):
                 handle_actions(action['do'], input)
             elif 'else' in action:
                 handle_actions(action['else'], input)
