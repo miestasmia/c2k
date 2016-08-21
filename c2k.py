@@ -172,6 +172,11 @@ def watch_controller(joystick, bindings, controller):
             mouse.press(mousePos[0], mousePos[1], action['button'])
         elif type == 'mouse_up':
             mouse.release(mousePos[0], mousePos[1], action['button'])
+        elif type == 'mouse_click':
+            n = 1
+            if 'n' in action:
+                n = action['n']
+            mouse.click(mousePos[0], mousePos[1], action['button'], n)
 
     def handle_actions(actions, input):
         if isinstance(actions, list):
