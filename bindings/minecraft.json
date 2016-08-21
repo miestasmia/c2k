@@ -1,0 +1,311 @@
+{
+    "name": "Minecraft",
+    "bindings": {
+        "Sony PLAYSTATION(R)3 Controller": {
+            "@right_ball_h": {
+                "type": "move_mouse_h_proportional",
+                "factor": 1000
+            },
+            "@right_ball_v": {
+                "type": "move_mouse_v_proportional",
+                "factor": 1000
+            },
+            "@left_ball_h": {
+                "type": "if",
+                "if": "x > .15",
+                "do": [
+                    {
+                        "type": "if_key",
+                        "key": "d",
+                        "is": false,
+                        "do": {
+                            "type": "keyboard_down",
+                            "key": "d"
+                        }
+                    },
+                    {
+                        "type": "if_key",
+                        "key": "a",
+                        "is": true,
+                        "do": {
+                            "type": "keyboard_up",
+                            "key": "a"
+                        }
+                    }
+                ],
+                "else": {
+                    "type": "if",
+                    "if": "x < -.15",
+                    "do": [
+                        {
+                            "type": "if_key",
+                            "key": "a",
+                            "is": false,
+                            "do": {
+                                "type": "keyboard_down",
+                                "key": "a"
+                            }
+                        },
+                        {
+                            "type": "if_key",
+                            "key": "d",
+                            "is": true,
+                            "do": {
+                                "type": "keyboard_up",
+                                "key": "d"
+                            }
+                        }
+                    ],
+                    "else": [
+                        {
+                            "type": "if",
+                            "if": "abs(x) < .15",
+                            "do": {
+                                "type": "if_key",
+                                "key": "d",
+                                "is": true,
+                                "do": {
+                                    "type": "keyboard_up",
+                                    "key": "d"
+                                }
+                            }
+                        },
+                        {
+                            "type": "if_key",
+                            "key": "a",
+                            "is": true,
+                            "do": {
+                                "type": "keyboard_up",
+                                "key": "a"
+                            }
+                        }
+                    ]
+                }
+            },
+            "@left_ball_v": {
+                "type": "if",
+                "if": "x > .15",
+                "do": [
+                    {
+                        "type": "if_key",
+                        "key": "s",
+                        "is": false,
+                        "do": {
+                            "type": "keyboard_down",
+                            "key": "s"
+                        }
+                    },
+                    {
+                        "type": "if_key",
+                        "key": "w",
+                        "is": true,
+                        "do": {
+                            "type": "keyboard_up",
+                            "key": "w"
+                        }
+                    }
+                ],
+                "else": {
+                    "type": "if",
+                    "if": "x < -.15",
+                    "do": [
+                        {
+                            "type": "if_key",
+                            "key": "w",
+                            "is": false,
+                            "do": {
+                                "type": "keyboard_down",
+                                "key": "w"
+                            }
+                        },
+                        {
+                            "type": "if_key",
+                            "key": "s",
+                            "is": true,
+                            "do": {
+                                "type": "keyboard_up",
+                                "key": "s"
+                            }
+                        }
+                    ],
+                    "else": [
+                        {
+                            "type": "if",
+                            "if": "abs(x) < .15",
+                            "do": {
+                                "type": "if_key",
+                                "key": "s",
+                                "is": true,
+                                "do": {
+                                    "type": "keyboard_up",
+                                    "key": "s"
+                                }
+                            }
+                        },
+                        {
+                            "type": "if_key",
+                            "key": "w",
+                            "is": true,
+                            "do": {
+                                "type": "keyboard_up",
+                                "key": "w"
+                            }
+                        }
+                    ]
+                }
+            },
+            "start": {
+                "type": "keyboard_tap",
+                "key": "Escape"
+            },
+            "l1_d": {
+                "type": "if",
+                "if": "b['r1_d']",
+                "do": {
+                    "type": "keyboard_down",
+                    "key": "e"
+                }
+            },
+            "!l1_d": {
+                "type": "if_key",
+                "key": "e",
+                "is": true,
+                "do": {
+                    "type": "keyboard_up",
+                    "key": "e"
+                }
+            },
+            "*l1_d": {
+                "type": "if_key",
+                "key": "e",
+                "is": false,
+                "do": {
+                    "type": "do_every",
+                    "every": 0.1,
+                    "do": {
+                        "type": "scroll",
+                        "y": 1
+                    }
+                }
+            },
+            "r1_d": {
+                "type": "if",
+                "if": "b['l1_d']",
+                "do": {
+                    "type": "keyboard_down",
+                    "key": "e"
+                }
+            },
+            "!r1_d": {
+                "type": "if_key",
+                "key": "e",
+                "is": true,
+                "do": {
+                    "type": "keyboard_up",
+                    "key": "e"
+                }
+            },
+            "*r1_d": {
+                "type": "if_key",
+                "key": "e",
+                "is": false,
+                "do": {
+                    "type": "do_every",
+                    "every": 0.1,
+                    "do": {
+                        "type": "scroll",
+                        "y": -1
+                    }
+                }
+            },
+            "r2_d": {
+                "type": "mouse_down",
+                "button": 2
+            },
+            "!r2_d": {
+                "type": "mouse_up",
+                "button": 2
+            },
+            "l2_d": {
+                "type": "mouse_down",
+                "button": 1
+            },
+            "!l2_d": {
+                "type": "mouse_up",
+                "button": 1
+            },
+            "x_d": {
+                "type": "keyboard_down",
+                "key": " "
+            },
+            "!x_d": {
+                "type": "keyboard_up",
+                "key": " "
+            },
+            "l3": {
+                "type": "keyboard_down",
+                "key": "Shift_L"
+            },
+            "!l3": {
+                "type": "keyboard_up",
+                "key": "Shift_L"
+            },
+            "r3": {
+                "type": "mouse_click",
+                "button": 3
+            },
+            "*circle_d": {
+                "type": "do_every",
+                "every": 0.1,
+                "do": {
+                    "type": "keyboard_tap",
+                    "key": "q"
+                }
+            },
+            "triangle_d": {
+                "type": "keyboard_tap",
+                "key": "f"
+            },
+            "square_d": {
+                "type": "keyboard_down",
+                "key": "Control_L"
+            },
+            "!square_d": {
+                "type": "keyboard_up",
+                "key": "Control_L"
+            },
+            "select": {
+                "type": "keyboard_tap",
+                "key": "t"
+            },
+            "left_d": {
+                "type": "keyboard_down",
+                "key": "Tab"
+            },
+            "!left_d": {
+                "type": "keyboard_up",
+                "key": "Tab"
+            },
+            "up_d": {
+                "type": "keyboard_tap",
+                "key": "F5"
+            },
+            "right_d": {
+                "type": "keyboard_tap",
+                "key": "F2"
+            },
+            "bottom_d": {
+                "type": "keyboard_tap",
+                "key": "F1"
+            },
+            "ps": {
+                "type": "keyboard_down",
+                "key": "F3"
+            },
+            "!ps": {
+                "type": "keyboard_up",
+                "key": "F3"
+            }
+        }
+    }
+}
