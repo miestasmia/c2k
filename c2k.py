@@ -27,7 +27,7 @@ from pymouse import PyMouse
 from pykeyboard import PyKeyboard
 
 DRAW_FPS  = 20
-WATCH_FPS = 30
+WATCH_FPS = 60
 TRIGGER_SYMBOLS = "!~@"
 
 dirname = os.path.dirname(__file__)
@@ -85,6 +85,8 @@ def watch_controller(joystick, bindings, controller):
 
     clock = pygame.time.Clock()
 
+    mousePos = (0, 0)
+
     controller_watch = {}
     controller_watch_previous = {}
     for name, input in controller['inputs'].iteritems():
@@ -101,6 +103,8 @@ def watch_controller(joystick, bindings, controller):
             return False
 
     def handle_action(action, input):
+        global mousePos
+
         type = action['type']
 
         if type == 'keyboard_tap':
@@ -122,6 +126,18 @@ def watch_controller(joystick, bindings, controller):
                 handle_actions(action['do'], input)
             elif 'else' in action:
                 handle_actions(action['else'], input)
+        elif type == 'move_mouse_h_proportional':
+            speed = controller_watch[input]
+            mouseX, mouseY = mousePos
+            mouseX += speed * action['factor']
+            mousePos = (mouseX, mouseY)
+            mouse.move(*mousePos)
+        elif type == 'move_mouse_v_proportional':
+            speed = controller_watch[input]
+            mouseX, mouseY = mousePos
+            mouseY += speed * action['factor']
+            mousePos = (mouseX, mouseY)
+            mouse.move(*mousePos)
 
     def handle_actions(actions, input):
         if isinstance(actions, list):
@@ -131,6 +147,8 @@ def watch_controller(joystick, bindings, controller):
             handle_action(actions, input)
 
     while True:
+        global mousePos
+
         pygame.event.pump()
 
         for event in pygame.event.get():
@@ -152,6 +170,8 @@ def watch_controller(joystick, bindings, controller):
                     val = (val + 1) / 2
 
                 controller_watch[name] = val
+
+        mousePos = mouse.position()
 
         for binding, actions in bindings.iteritems():
             trigger = ""
